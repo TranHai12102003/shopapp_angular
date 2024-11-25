@@ -1,0 +1,96 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Section Styling */
+.intro-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.container{
+    margin-top: 40px;
+}
+
+/* Product Section */
+.product-header {
+    color: rgb(233, 66, 176);
+}
+
+.product-order {
+    color: rgb(105, 244, 181);
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+}
+
+.product-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.product-name {
+    margin-right: 10px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-radius: 10px;
+    border-collapse: separate;
+    border: 1px solid;
+    border-spacing: 0;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+/* Form Control */
+.form-control {
+    border: 1px solid rgb(29, 33, 54);
+    box-shadow: none;
+    cursor: text;
+}
+
+/* Button Styling */
+.btn-gradient {
+    background: linear-gradient(to right, rgb(225, 64, 180), rgb(126, 43, 237));
+    color: white;
+    border-radius: 30px;
+    width: 200px;
+}
+
+.btn-outline-secondary {
+    margin: 0 5px;
+}
+
+/* Quantity Control */
+.quantity-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-control .btn-decrease,
+.quantity-control .btn-increase {
+    border: none;
+    background: none;
+    width: 30px;
+    height: 30px;
+    line-height: 2px;
+    border-radius: 5px;
+    background-color:#f3f3f3;
+}
+
+.quantity-input {
+    width: 60px;
+    text-align: center;
+}

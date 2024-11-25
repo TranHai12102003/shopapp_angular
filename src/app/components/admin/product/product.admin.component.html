@@ -1,0 +1,72 @@
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Danh Sách Sản Phẩm</h1>
+        <div class="mb-3 text-right">
+            <button class="btn btn-success" (click)="insertProduct()"><i class="fas fa-plus"></i> Thêm Sản Phẩm Mới</button>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-striped table-bordered align-middle">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Tên sản phẩm</th>
+                        <th scope="col">Danh mục</th>
+                        <th scope="col">Hình ảnh</th>
+                        <th scope="col">Giá</th>
+                        <th scope="col">Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products">
+                        <td>{{product.id}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{getCategoryName(product.category_id)}}</td>
+                        <td><img class="product-image  img-fluid" [src]="product.url"  width="200" height="200" alt="Laptop Image"></td>
+                        <td>{{product.price | currency: 'VND': 'symbol':'1.0-0'}}</td>
+                        <!-- <td><span class="badge badge-success text-black">Còn hàng</span></td> -->
+                        <td>
+                            <button class="btn btn-primary btn-sm" (click)="updateProduct(product.id)" ><i class="fa fa-edit"></i> Sửa</button>
+                            <button class="btn btn-danger btn-sm" (click)="deleteProductId(product)"><i class="fa fa-trash"></i> Xóa</button>
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <td>2</td>
+                        <td>Laptop Dell XPS 13</td>
+                        <td>Laptop</td>
+                        <td>30,000,000 VND</td>
+                        <td>20</td>
+                        <td><span class="badge badge-warning text-black">Hết hàng</span></td>
+                        <td>
+                            <button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Sửa</button>
+                            <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Xóa</button>
+                        </td>
+                    </tr> -->
+                    <!-- Thêm các dòng dữ liệu khác tương tự -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item" *ngIf="currentPage > 1">
+                    <a class="page-link" 
+                    (click)="onPageChange(1)">First</a>
+                </li>
+                <li class="page-item" *ngIf="currentPage > 1">
+                    <a class="page-link" 
+                    (click)="onPageChange(currentPage - 1)">Previous</a>
+                </li>
+                <ng-container *ngFor="let page of visiblePages">
+                    <li class="page-item" [ngClass]="{'active': page === currentPage}">
+                        <a class="page-link" (click)="onPageChange(page)">{{ page }}</a>
+                    </li>
+                </ng-container>
+                <li class="page-item" *ngIf="currentPage < totalPages">
+                    <a class="page-link" (click)="onPageChange(currentPage + 1)">Next</a>
+                </li>
+                <li class="page-item" *ngIf="currentPage < totalPages">
+                    <a class="page-link" (click)="onPageChange(totalPages)">Last</a>
+                </li>
+            </ul>
+        </nav>
+    </div>

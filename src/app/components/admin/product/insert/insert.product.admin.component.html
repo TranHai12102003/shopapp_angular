@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <h1>Thêm Sản Phẩm Mới</h1>
+    <form id="add-product-form" (ngSubmit)="insertProduct()" >
+        <div class="form-group"> 
+            <label for="name">Tên sản phẩm:</label> 
+            <input type="text" id="name" name="name" [(ngModel)]="insertProductDTO.name" required> 
+        </div>
+        <div class="form-group"> 
+            <label for="price">Giá:</label> 
+            <input type="number" id="price" [(ngModel)]="insertProductDTO.price" name="price" required>
+        </div>
+        <div class="form-group"> 
+            <label for="thumbnail">Hình ảnh:</label> 
+            <input type="text" id="thumbnail" [(ngModel)]="insertProductDTO.thumbnail"
+                name="thumbnail"> 
+        </div>
+        <div class="form-group"> 
+            <label for="description">Mô tả:</label> 
+            <ckeditor id="description" name="description" [editor]="Editor" [(ngModel)]="insertProductDTO.description"
+                rows="4" required ></ckeditor> 
+        </div>
+        <div class="form-group"> 
+            <label for="category">Danh mục:</label> 
+            <select id="category" name="category" [(ngModel)]="insertProductDTO.category_id" required>
+                <option [value]="null">Chọn danh mục</option>
+                <option *ngFor="let category of categories" [value]="category.id"  >{{category.name}}</option>
+            </select>
+         </div>
+        <div class="form-group"> 
+            <label for="attributes">
+                Thuộc tính sản phẩm:
+            </label>
+            <div id="attributes">
+                <div class="attribute-item" *ngFor="let attribute of attributes;  let i=index" >
+                     <label for="attribute{{i}}">
+                        {{attribute.name}}
+                     </label> 
+                     <input type="text"
+                        id="attribute1" name="attributeValue{{ i }}" [(ngModel)]="insertProductDTO.product_attributes[i].value" class="form-control" placeholder="Nhập giá trị thuộc tính "> 
+                    </div>
+                <!-- Thêm các thuộc tính khác tương tự -->
+            </div>
+        </div> 
+        <button type="submit">Thêm Sản Phẩm</button>
+    </form>
+</div>

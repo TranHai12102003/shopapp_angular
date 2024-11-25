@@ -1,0 +1,20 @@
+<div>
+    <select class="form-select form-select-sm mb-3" [(ngModel)]="selectedCityId" (change)="onCityChange()">
+      <option value="" selected>Chọn tỉnh thành</option>
+      <option *ngFor="let city of cities" [value]="city.Id">{{ city.Name }}</option>
+    </select>
+  
+    <select class="form-select form-select-sm mb-3" [(ngModel)]="selectedDistrictId" (change)="onDistrictChange()">
+      <option value="" selected>Chọn quận huyện</option>
+      <option *ngFor="let district of districts" [value]="district.Id">{{ district.Name }}</option>
+    </select>
+  
+    <select class="form-select form-select-sm">
+      <option value="" selected>Chọn phường xã</option>
+      <option *ngFor="let ward of wards" [value]="ward.Id">{{ ward.Name }}</option>
+    </select>
+
+    <input type="text" [value]="fullAddress" readonly class="form-control mb-3" placeholder="Địa chỉ tổng hợp" (change)="updateFullAddress()" />
+  </div>
+  
+  

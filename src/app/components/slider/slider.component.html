@@ -1,0 +1,67 @@
+<div class="container">
+  <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      </div>
+      <div class="carousel-inner container"  >
+        <div class="carousel-item active" *ngFor="let slider of sliders" >
+          <img [src]="slider.imageUrl" class="d-block w-100 rounded-3" alt="..."(click)="onSliderClick(slider)" >
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+</div>
+
+<!-- <div class="cate-list mt-5 mb-5 container">
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="owl-carousel owl-theme">
+        <div class="item">
+          <img src="assets/img/logo1.png"  alt="">
+        </div>
+        <div class="item">
+          <img src="assets/img/bird_blue_32.png" alt="">
+        </div>
+        <div class="item">
+          <h4>3</h4>
+        </div>
+        <div class="item">
+          <h4>4</h4>
+        </div>
+        <div class="item">
+          <h4>5</h4>
+        </div>
+        <div class="item">
+          <h4>6</h4>
+        </div>
+        <div class="item">
+          <h4>7</h4>
+        </div>
+        <div class="item">
+          <h4>8</h4>
+        </div>
+        <div class="item">
+          <h4>9</h4>
+        </div>
+        <div class="item">
+          <h4>10</h4>
+        </div>
+        <div class="item">
+          <h4>11</h4>
+        </div>
+        <div class="item">
+          <h4>12</h4>
+        </div>
+  </div>
+</div>
+</div> -->

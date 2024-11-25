@@ -1,0 +1,122 @@
+.intro-section {
+    // color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.product-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.thumbnail-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.thumbnail-item {
+    width: 120px;
+    height: 120px;
+    margin-right: 5px;
+    cursor: pointer;
+    /* Thêm khoảng cách ngang giữa các ảnh */
+}
+
+.thumbnail-item:last-child {
+    margin-right: 0;
+    /* Xóa khoảng cách ngang ở ảnh cuối cùng */
+}
+
+.thumbnail-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbnail-item.active {
+    border: 2px solid #ccc;
+}
+.product-details {
+    // color: white;
+    padding: 20px;
+}
+
+.product-actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.product-actions button {
+    margin-right: 10px;
+}
+.border-wrapper {
+    border: 1px solid;      
+  }
+
+  .product-quantity {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-top: 10px;
+  }
+
+  .product-quantity button {
+      background-color: transparent;
+      border: none;
+    //   color: white;
+      font-size: 16px;
+      cursor: pointer;
+  }
+  .product-quantity input {
+    background-color: transparent;
+    border: none;
+    // color: white;
+    font-size: 16px;
+    text-align: center;
+    width: 40px;
+    margin: 0 10px;
+  }
+  .product-quantity input:focus {
+    outline: none;
+  }  
+
+  .attribute-items{
+    display: flex;
+  }
+
+  .product-price {
+    font-size: 20px; /* Kích thước chữ lớn hơn */
+    color: #333; /* Màu chữ */
+    margin: 10px 0; /* Khoảng cách trên và dưới */
+}
+
+.price-value {
+    font-weight: bold; /* Làm đậm giá trị */
+    color: #ff5733; /* Màu sắc nổi bật cho giá */
+    font-size: 22px; /* Kích thước chữ cho giá lớn hơn */
+}
+
+/* Nếu bạn muốn phân chia giá trị */
+.price-value::after {
+    content: '₫'; /* Thêm ký hiệu tiền tệ */
+    margin-left: 5px; /* Khoảng cách giữa ký hiệu và giá */
+    font-size: 18px; /* Kích thước chữ cho ký hiệu tiền tệ */
+}
+
+.price-value {
+    border: 2px solid #ff5733; /* Đường viền bao quanh giá trị */
+    padding: 5px; /* Khoảng cách bên trong */
+    border-radius: 5px; /* Bo tròn các góc */
+    background-color: #f9f9f9; /* Nền sáng cho giá trị */
+}
+
+.attribute-name{
+    font-weight: 500;
+}
+
+.container{
+    margin-top: 100px;
+}

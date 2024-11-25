@@ -1,0 +1,43 @@
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 2em;
+    color: #333;
+}
+
+.table-responsive {
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.btn {
+    margin-right: 5px;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.page-link {
+    color: #007bff;
+}
+
+.page-link:hover {
+    color: #0056b3;
+}
+
+.page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}

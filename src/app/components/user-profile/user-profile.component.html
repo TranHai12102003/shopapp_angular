@@ -1,0 +1,73 @@
+<app-header></app-header>
+<form [formGroup]="userProfileForm">
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    <span class="font-weight-bold">Edogaru</span>
+                    <span class="text-black-50">edogaru&#64;mail.com.my</span>
+                </div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Thông tin cá nhân</h4>
+                    </div>
+                    <div class="row mt-3 gap-3">
+                        <div class="col-md-12">
+                            <label for="fullname">Họ và tên</label>
+                            <input type="text" formControlName="fullname" class="form-control" placeholder="Nhập họ và tên"
+                                [class.is-invalid]="userProfileForm.get('fullname')!.invalid && userProfileForm.get('fullname')!.touched">
+                            <div *ngIf="userProfileForm.get('fullname')!.invalid && userProfileForm.get('fullname')!.touched" class="invalid-feedback">
+                                Họ và tên là trường bắt buộc.
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-12">
+                            <label for="phone">Số điện thoại</label>
+                            <input type="text" class="form-control" formControlName="phone_number" placeholder="Nhập số điện thoại"
+                                [class.is-invalid]="userProfileForm.get('phone_number')!.invalid && userProfileForm.get('phone_number')!.touched">
+                            <div *ngIf="userProfileForm.get('phone_number')!.invalid && userProfileForm.get('phone_number')!.touched" class="invalid-feedback">
+                                Số điện thoại là trường bắt buộc và ít nhất 6 ký tự.
+                            </div>
+                        </div> -->
+                        <div class="col-md-12">
+                            <label for="password">Mật khẩu</label>
+                            <input type="password" class="form-control" formControlName="password" placeholder="Nhập mật khẩu"
+                                [class.is-invalid]="userProfileForm.get('password')!.invalid && userProfileForm.get('password')!.touched">
+                            <div *ngIf="userProfileForm.get('password')!.invalid && userProfileForm.get('password')!.touched" class="invalid-feedback">
+                                Mật khẩu ít nhất 3 kí tự
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="retype_password">Nhập lại mật khẩu</label>
+                            <input type="password" class="form-control" formControlName="retype_password" placeholder="Nhập mật khẩu"
+                                [class.is-invalid]="userProfileForm.get('retype_password')!.invalid && userProfileForm.get('retype_password')!.touched">
+                            <div *ngIf="userProfileForm.get('retype_password')!.invalid && userProfileForm.get('retype_password')!.touched" class="invalid-feedback">
+                                Mật khẩu ít nhất 3 kí tự
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="address">Địa chỉ</label>
+                            <input type="text" formControlName="address" class="form-control" placeholder="Nhập địa chỉ"
+                                [class.is-invalid]="userProfileForm.get('address')!.invalid && userProfileForm.get('address')!.touched">
+                            <div *ngIf="userProfileForm.get('address')!.invalid && userProfileForm.get('address')!.touched" class="invalid-feedback">
+                                Địa chỉ là trường bắt buộc và ít nhất 5 ký tự.
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="date_of_birth">Ngày sinh</label>
+                            <input type="date" class="form-control" formControlName="date_of_birth" placeholder="Nhập ngày sinh">
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <button class="btn btn-primary profile-button" type="button" (click)="save()">
+                            Lưu thông tin
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<app-footer></app-footer>

@@ -1,0 +1,85 @@
+<app-header></app-header>
+<div class="container">
+  <div class="intro-section">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Trang chủ</a></li>
+        <li class="breadcrumb-item"><a>{{product?.category_id== 18 ? "HP Pavilion" :""}}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{product?.name}}</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div *ngFor="let image of product?.product_images; let i = index" class="carousel-item"
+            [ngClass]="{'active': i === currentImageIndex}">
+            <div class="square-image">
+              <img [src]="image.image_url" class="product-image" alt="Product Image">
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"
+          (click)="previousImage()">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"
+          (click)="nextImage()">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div class="row">
+        <div class="thumbnail-container">
+          <div *ngFor="let image of product?.product_images; let i = index" class="thumbnail-item"
+            [ngClass]="{'active': i === currentImageIndex}" (click)="thumbnailClick(i)">
+            <img [src]="image.image_url" class="thumbnail-image" alt="Thumbnail Image">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="product-details">
+        <h2>{{ product?.name }}</h2>
+        <!-- <p>{{ product?.description }}</p> -->
+        <p class="product-price"><span class="price-value">{{ product?.price | number }}</span></p>
+        <div class="product-attributes">
+          <h4>Thông số kỹ thuật</h4>
+          <!-- <ul>
+              <li *ngFor="let attribute of product?.attributes" class="attribute-item">
+                  <strong class="attribute-name">{{ attribute.name }}:</strong>
+                  <span class="attribute-values">
+                      <ul>
+                          <li *ngFor="let productAttribute of attribute.product_attributes">
+                              {{ productAttribute.value }}
+                          </li>
+                      </ul>
+                  </span>
+              </li>
+          </ul> -->
+          <div *ngFor="let attribute of product?.attributes" class="attribute-items">
+            <div class="attribute-name">{{ attribute.name }}:</div>
+            <div class="attribute-values" *ngFor="let productAttribute of attribute.product_attributes">
+              {{ productAttribute.value }}
+            </div>
+          </div>
+        </div>
+        <div class="product-actions">
+          <button class="btn btn-primary" routerLink="/orders" (click)="addToCart()">Thêm vào giỏ hàng</button>
+          <button class="btn btn-success" routerLink="/orders" (click)="buyNow()">Mua ngay</button>
+        </div>
+        <div class="product-quantity">
+          <div class="border-wrapper">
+            <button (click)="decreaseQuantity()">-</button>
+            <input type="text" [value]="quantity">
+            <button (click)="increaseQuantity()">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="product-description mt-5"> <h3>Mô tả sản phẩm</h3> <p [innerHTML]="product?.description"></p> </div>
+</div>
+<app-footer></app-footer>
