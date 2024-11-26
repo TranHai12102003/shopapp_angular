@@ -10,32 +10,25 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Tiêu đề</th>
+                        <th scope="col">Mã Sản phẩm</th>
                         <th scope="col">Hình ảnh</th>
                         <th scope="col">Liên kết</th>
                         <th scope="col">Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Khuyến mãi mùa hè</td>
-                        <td><img src="https://via.placeholder.com/100x50" alt="Slider Image" class="slider-image"></td>
-                        <td><a href="https://example.com">https://example.com</a></td>
+                    <tr *ngFor=" let slider of sliders">
+                        <td>{{slider.id}}</td>
+                        <td>{{slider.title}}</td>
+                        <td>{{slider.productId}}</td>
+                        <td><img [src]="slider.imageUrl" alt="Slider Image" class="slider-image"></td>
+                        <td><a>{{slider.linkType}}</a></td>
                         <td>
                             <button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Sửa</button>
-                            <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Xóa</button>
+                            <button class="btn btn-danger btn-sm" (click)="deleteSliderId(slider)"><i class="fa fa-trash"></i> Xóa</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Giảm giá cuối năm</td>
-                        <td><img src="https://via.placeholder.com/100x50" alt="Slider Image" class="slider-image"></td>
-                        <td><a href="https://example.com">https://example.com</a></td>
-                        <td>
-                            <button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Sửa</button>
-                            <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Xóa</button>
-                        </td>
-                    </tr>
+                    
                     <!-- Thêm các dòng dữ liệu khác tương tự -->
                 </tbody>
             </table>

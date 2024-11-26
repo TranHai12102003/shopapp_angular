@@ -22,11 +22,15 @@ export class SliderService{
           return this.http.get<Slider[]>(this.apiGetSliders, { params });           
       }
 
+      deleteSlider(sliderId:number){
+        return this.http.delete(`${this.apiGetSliders}/${sliderId}`)
+      }
+
     // Phương thức xử lý hành động khi click vào slider
   handleSliderAction(slider: Slider): Observable<any> {
     if (slider.linkType === 'category' && slider.categoryId) {
       // Trả về danh sách sản phẩm thuộc danh mục
-      return this.http.get<Product[]>(`${this.apiGetProductsByCategory}/${slider.categoryId}/products`);
+      return this.http.get<Product[]>(`${this.apiGetProductDetails}/category/${slider.categoryId}`);
     } else if (slider.linkType === 'product' && slider.productId) {
       // Trả về chi tiết sản phẩm
       return this.http.get<Product>(`${this.apiGetProductDetails}/${slider.productId}`);

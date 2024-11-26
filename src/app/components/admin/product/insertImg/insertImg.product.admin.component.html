@@ -1,0 +1,11 @@
+   <div class="container">
+        <h1>Upload Ảnh</h1>
+        <form id="upload-image-form" (ngSubmit)="insertProductImgs()" enctype="multipart/form-data" >
+            <div class="form-group">
+                <label for="image">Chọn ảnh:</label>
+                <input type="file" (change)="onFileChange($event)" multiple id="image" name="image" accept="image/*" required>
+            </div>
+            <button type="submit">Tải Lên</button>
+        </form>
+    </div>
+

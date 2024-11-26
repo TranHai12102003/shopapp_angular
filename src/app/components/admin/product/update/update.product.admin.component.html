@@ -1,47 +1,50 @@
-<form (ngSubmit)="updateProduct()">
-    <div class="form-group">
-      <label for="name">Tên sản phẩm</label>
-      <input type="text" id="name" [(ngModel)]="updateProductDTO.name" name="name" class="form-control" required />
-    </div>
-  
-    <div class="form-group">
-      <label for="price">Giá</label>
-      <input type="number" id="price" [(ngModel)]="updateProductDTO.price" name="price" class="form-control" required />
-    </div>
-  
-    <div class="form-group">
-      <label for="thumbnail">Hình ảnh</label>
-      <input type="text" id="thumbnail" [(ngModel)]="updateProductDTO.thumbnail" name="thumbnail" class="form-control" />
-    </div>
-  
-    <div class="form-group">
-      <label for="category">Danh mục</label>
-      <select id="category" [(ngModel)]="updateProductDTO.category_id" name="category_id" class="form-control">
-        <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
-      </select>
-    </div>
-  
-    <div class="form-group">
-      <label for="description">Mô tả</label>
-      <ckeditor [(ngModel)]="updateProductDTO.description" name="description" [editor]="Editor"></ckeditor>
-    </div>
-  
-    <div class="form-group"> 
-      <label for="attributes">
-          Thuộc tính sản phẩm:
-      </label>
-      <div id="attributes">
-          <div class="attribute-item" *ngFor="let attribute of attributes;  let i=index" >
-               <label for="attribute{{i}}">
-                  {{attribute.name}}
-               </label> 
-               <input type="text"
-                  id="attribute1" name="attributeValue{{ i }}" [(ngModel)]="updateProductDTO.product_attributes[i].value" class="form-control" placeholder="Nhập giá trị thuộc tính "> 
-              </div>
-          <!-- Thêm các thuộc tính khác tương tự -->
+<div class="container-fluid">
+  <h1>Cập nhật sản phẩm</h1>
+  <form (ngSubmit)="updateProduct()">
+      <div class="form-group">
+        <label for="name">Tên sản phẩm</label>
+        <input type="text" id="name" [(ngModel)]="updateProductDTO.name" name="name" class="form-control" required />
       </div>
-  </div> 
-  
-    <button type="submit" class="btn btn-primary">Cập nhật sản phẩm</button>
-  </form>
+    
+      <div class="form-group">
+        <label for="price">Giá</label>
+        <input type="number" id="price" [(ngModel)]="updateProductDTO.price" name="price" class="form-control" required />
+      </div>
+    
+      <div class="form-group">
+        <label for="thumbnail">Hình ảnh</label>
+        <input type="text" id="thumbnail" [(ngModel)]="updateProductDTO.thumbnail" name="thumbnail" class="form-control" />
+      </div>
+    
+      <div class="form-group">
+        <label for="category">Danh mục</label>
+        <select id="category" [(ngModel)]="updateProductDTO.category_id" name="category_id" class="form-control">
+          <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+        </select>
+      </div>
+    
+      <div class="form-group">
+        <label for="description">Mô tả</label>
+        <ckeditor [(ngModel)]="updateProductDTO.description" name="description" [editor]="Editor"></ckeditor>
+      </div>
+    
+      <div class="form-group"> 
+        <label for="attributes">
+            Thuộc tính sản phẩm:
+        </label>
+        <div id="attributes">
+            <div class="attribute-item" *ngFor="let attribute of attributes;  let i=index" >
+                 <label for="attribute{{i}}">
+                    {{attribute.name}}
+                 </label> 
+                 <input type="text"
+                    id="attribute1" name="attributeValue{{ i }}" [(ngModel)]="updateProductDTO.product_attributes[i].value" class="form-control" placeholder="Nhập giá trị thuộc tính "> 
+                </div>
+            <!-- Thêm các thuộc tính khác tương tự -->
+        </div>
+    </div> 
+    
+      <button type="submit" class="btn btn-primary">Cập nhật sản phẩm</button>
+    </form>
+</div>
   

@@ -21,9 +21,10 @@ export class UpdateProductComponent implements OnInit{
   categories: Category[] = [];
   attributes: Attribute[] = []; // Lấy danh sách thuộc tính từ backend
   productId!:number;
-  updatedProduct:Product = {} as Product
+  updatedProduct:Product = {} as Product;
+  product:Product = {} as Product;
   public Editor = ClassicEditor;
-  updateProductDTO:ProductDTO={
+  updateProductDTO:ProductUpdateDTO={
     name: "",
     price: 0,
     thumbnail: "",
@@ -53,6 +54,22 @@ export class UpdateProductComponent implements OnInit{
 
         // Lấy danh sách thuộc tính
         this.getAllAtrributes();
+  }
+  getProductById(id: number) {
+    this.productService.getProductById(id).subscribe({
+      next: (product: Product) => {
+        console.log("Thông tin sản phẩm:", product);
+        this.updateProductDTO=product;
+        // Chỉ lấy những thuộc tính có giá trị hợp lệ
+        // this.updateProductDTO = {
+        //   ...product
+        // };
+        console.log("Danh sách product_attributes sau khi load:", this.updateProductDTO.product_attributes);
+      },
+      error: (error: any) => {
+        console.error("Lỗi khi lấy sản phẩm", error);
+      },
+    });
   }
 
   getAllCategoires(){
@@ -149,33 +166,11 @@ export class UpdateProductComponent implements OnInit{
   //     },
   //   });
   // }
-  getProductById(id: number) {
-    this.productService.getProductById(id).subscribe({
-      next: (product: Product) => {
-        console.log("Thông tin sản phẩm:", product);
   
-        // Chỉ lấy những thuộc tính có giá trị hợp lệ
-        this.updateProductDTO = {
-          name: product.name,
-          price: product.price,
-          thumbnail: product.thumbnail,
-          description: product.description,
-          category_id: product.category_id,
-          product_attributes:product.product_attributes
-        };
-        console.log("Danh sách product_attributes sau khi load:", this.updateProductDTO.product_attributes);
-      },
-      error: (error: any) => {
-        console.error("Lỗi khi lấy sản phẩm", error);
-      },
-    });
-  }
-  
-
   updateProduct() {
     console.log("Dữ liệu cập nhật:", this.updateProductDTO);
     this.productService.updateProduct(this.productId, this.updateProductDTO).subscribe({
-      next: (product:ProductDTO) => {
+      next: (product:ProductUpdateDTO) => {
         console.log("Sản phẩm đã được cập nhật:", product);
         alert("Cập nhật sản phẩm thành công");
         this.router.navigate(["/admin"]);
@@ -187,36 +182,5 @@ export class UpdateProductComponent implements OnInit{
     });
   }
   
-
-  // initAttributes() {
-  //   const attributeArray = this.productForm.get(
-  //     'productAttributeDTOS'
-  //   ) as FormArray;
-
-  //   this.attributes.forEach((attribute) => {
-  //     attributeArray.push(
-  //       this.fb.group({
-  //         attributeId: [attribute.id, Validators.required],
-  //         value: ['', Validators.required],
-  //       })
-  //     );
-  //   });
-  // }
-
-  // onSubmit() {
-  //   if (this.productForm.invalid) {
-  //     return;
-  //   }
-
-  //   const productDTO = this.productForm.value;
-  //   this.productService.addProduct(productDTO).subscribe({
-  //     next: (response) => {
-  //       console.log('Sản phẩm đã được thêm:', response);
-  //     },
-  //     error: (error) => {
-  //       console.error('Lỗi khi thêm sản phẩm:', error);
-  //     },
-  //   });
-  // }
     
 }

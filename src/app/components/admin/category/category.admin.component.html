@@ -15,7 +15,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let category of categories">
+                    <tr *ngFor="let category of categories" >
                         <td>{{category.id}}</td>
                         <td>{{category.name}}</td>
                         <td>{{ getParentCategoryName(category.parent_id) }}</td>

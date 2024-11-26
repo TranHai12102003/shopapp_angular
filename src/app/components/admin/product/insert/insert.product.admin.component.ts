@@ -26,7 +26,7 @@ export class InsertProductComponent implements OnInit{
     thumbnail: "",
     description: "",
     category_id: 0,
-    product_attributes: []
+    product_attributes: [],
   }
 
   constructor(

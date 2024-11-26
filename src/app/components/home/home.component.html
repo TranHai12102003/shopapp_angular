@@ -61,11 +61,11 @@
                     <div class="product-item">
                         <img class="product-image img-fluid" [src]="product.url" alt="Laptop Image">
                         <h3 class="product-name" (click)="onProductClick(product.id)">{{ product.name }}</h3>
-                        <p class="product-description" 
+                        <!-- <p class="product-description" 
                            [class.expanded]="product.showFullDescription"
                            (click)="toggleDescription(product, $event)">
                             {{ product.showFullDescription ? product.description : (product.description | slice: 0:50) + '...' }}
-                        </p>
+                        </p> -->
                         <div class="row ">
                             <div class="col-6">
                                 <p class="product-price price-value text-danger">{{ product.price | number }}</p>

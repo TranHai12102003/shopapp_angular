@@ -29,6 +29,7 @@ import { InsertCategoryAdminComponent } from './components/admin/category/insert
 import { InsertProductComponent } from './components/admin/product/insert/insert.product.admin.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { UpdateProductComponent } from './components/admin/product/update/update.product.admin.component';
+import { InsertProductImg } from './components/admin/product/insertImg/insertImg.product.admin.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -52,7 +53,9 @@ import { UpdateProductComponent } from './components/admin/product/update/update
     UpdateCategoryAdminComponent,
     InsertCategoryAdminComponent,
     InsertProductComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    InsertProductImg,
+    
   ],
   imports: [
     BrowserModule,

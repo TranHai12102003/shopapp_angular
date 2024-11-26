@@ -5,6 +5,7 @@ import { environment } from '../environments/environment';
 import { Product } from '../models/product';
 import { Category } from '../models/category';
 import { ProductDTO } from '../dtos/product/insert.product.dto';
+import { ProductImage } from '../models/product.image';
 
 @Injectable({
   providedIn: 'root'
@@ -49,4 +50,21 @@ export class ProductService {
     return this.http.put<any>(`${this.apiGetProducts}/${productId}`,productUpdateDTO)
 
   }
+  insertProductImg(productId: number, formData: FormData): Observable<ProductImage[]> {
+    return this.http.post<ProductImage[]>(`${this.apiGetProducts}/uploads/${productId}`,formData);
+  }
+
+
+  // uploadImages(productId: number, files: File[]): Observable<any> {
+  //   const formData = new FormData();
+  //   for (let i = 0; i < files.length; i++) {
+  //     formData.append('files', files[i]);
+  //   }
+  //   // Upload images for the specified product id
+  //   return this.http.post(`${this.apiGetProducts}/products/uploads/${productId}`, formData);
+  // }
+  // deleteProductImage(id: number): Observable<any> {
+  //   debugger
+  //   return this.http.delete<string>(`${this.apiGetProducts}/product_images/${id}`);
+  // }
 }

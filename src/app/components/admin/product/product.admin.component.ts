@@ -31,6 +31,7 @@ export class ProductAdminComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loadCategories();
     // Lắng nghe thay đổi từ selectedCategoryId và keyword
     this.sharedService.selectedCategoryId$.subscribe((categoryId: number) => {
       this.selectedCategoryId = categoryId;
@@ -102,28 +103,11 @@ export class ProductAdminComponent implements OnInit {
   getCategoryName(categoryId: number | null): string {
     if (!categoryId) return 'Không xác định';
   
-    // Hàm đệ quy để tìm danh mục trong danh sách và danh mục con
-    const findCategory = (categories: Category[], id: number): Category | null => {
-      for (const category of categories) {
-        if (category.id === id) {
-          return category;
-        }
-        if (category.subCategories) {
-          const subCategory = findCategory(category.subCategories, id);
-          if (subCategory) {
-            return subCategory;
-          }
-        }
-      }
-      return null;
-    };
+    const category = this.categories.find((cat) => cat.id === categoryId);
   
-    // Gọi hàm đệ quy để tìm danh mục
-    const category = findCategory(this.categories, categoryId);
-  
-    // Trả về tên danh mục hoặc "Không xác định" nếu không tìm thấy
     return category ? category.name : 'Không xác định';
   }
+  
   //Xóa sản phẩm
   deleteProductId(product: Product) {
     const confirmation = window.confirm('Bạn chắc chắn xóa sản phẩm này?');
@@ -133,7 +117,7 @@ export class ProductAdminComponent implements OnInit {
         next: (respone) => {
           debugger;
           console.log(respone);
-          alert('Xóa thành công');
+          alert(respone);
           location.reload();
           // this.getAllCategoires(this.currentPage,this.itemsPerPage)
         },
@@ -198,5 +182,9 @@ export class ProductAdminComponent implements OnInit {
   updateProduct(productId:number){
     debugger
     this.router.navigate(['/admin/product/update',productId]);
+}
+insertProductImg(productId:number){
+  debugger
+  this.router.navigate(['/admin/product/insert-product-img',productId]);
 }
 }
