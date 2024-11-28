@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Order } from "src/app/models/order";
 import { OrderService } from "src/app/services/order.service";
 import { OrderResponse } from "src/app/responses/order/order.response";
+import { Router } from "@angular/router";
 
 @Component({
     selector:'app-order-admin',
@@ -16,7 +17,7 @@ export class OrderAdminComponent implements OnInit{
     totalPages:number = 0;
     keyword:string ="";
     visiblePages:number[]=[];
-    constructor(private orderService:OrderService){
+    constructor(private orderService:OrderService, private router:Router){
 
     }
     ngOnInit(): void {
@@ -64,5 +65,10 @@ export class OrderAdminComponent implements OnInit{
       }
       deleteOrder(id:number) {
         
+      }
+
+      viewDetails(order:OrderResponse) {
+        debugger
+        this.router.navigate(['/admin/orders', order.id]);
       }
 }

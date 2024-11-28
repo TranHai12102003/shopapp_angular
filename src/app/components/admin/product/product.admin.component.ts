@@ -117,7 +117,7 @@ export class ProductAdminComponent implements OnInit {
         next: (respone) => {
           debugger;
           console.log(respone);
-          alert(respone);
+          alert("Xóa thành công");
           location.reload();
           // this.getAllCategoires(this.currentPage,this.itemsPerPage)
         },

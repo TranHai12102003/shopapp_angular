@@ -4,7 +4,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a routerLink="/">Trang chủ</a></li>
-        <li class="breadcrumb-item"><a>{{product?.category_id== 18 ? "HP Pavilion" :""}}</a></li>
+        <li class="breadcrumb-item"><a>{{categoryName}}</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{product?.name}}</li>
       </ol>
     </nav>
@@ -68,7 +68,7 @@
         </div>
         <div class="product-actions">
           <button class="btn btn-primary" routerLink="/orders" (click)="addToCart()">Thêm vào giỏ hàng</button>
-          <button class="btn btn-success" routerLink="/orders" (click)="buyNow()">Mua ngay</button>
+          <!-- <button class="btn btn-success" routerLink="/orders" (click)="buyNow()">Mua ngay</button> -->
         </div>
         <div class="product-quantity">
           <div class="border-wrapper">
@@ -80,6 +80,16 @@
       </div>
     </div>
   </div>
-  <div class="product-description mt-5"> <h3>Mô tả sản phẩm</h3> <p [innerHTML]="product?.description"></p> </div>
+  <!-- <div class="product-description mt-5">
+     <h3>Mô tả sản phẩm</h3>
+      <p [innerHTML]="product?.description"></p> 
+    </div> -->
+    <div class="product-description mt-5">
+      <h3>Mô tả sản phẩm</h3>
+      <p [innerHTML]="truncatedDescription"></p>
+      <button class="btn btn-link" (click)="toggleDescription()">
+        {{ isDescriptionExpanded ? 'Thu gọn' : 'Xem thêm' }}
+      </button>
+    </div>    
 </div>
 <app-footer></app-footer>

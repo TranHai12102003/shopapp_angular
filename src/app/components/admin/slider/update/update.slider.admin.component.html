@@ -1,0 +1,45 @@
+<div class="container">
+    <h2>Chỉnh sửa Slider</h2>
+    <form [formGroup]="sliderForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Tiêu đề:</label>
+        <input
+          id="title"
+          type="text"
+          class="form-control"
+          formControlName="title"
+          placeholder="Nhập tiêu đề"
+        />
+      </div>
+      <div class="form-group">
+        <label for="linkType">Loại liên kết:</label>
+        <select id="linkType" class="form-control" formControlName="link_type">
+          <option value="category">Danh mục</option>
+          <option value="product">Sản phẩm</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="categoryId">ID Danh mục (nếu có):</label>
+        <input
+          id="categoryId"
+          type="number"
+          class="form-control"
+          formControlName="category_id"
+        />
+      </div>
+      <div class="form-group">
+        <label for="productId">ID Sản phẩm (nếu có):</label>
+        <input
+          id="productId"
+          type="number"
+          class="form-control"
+          formControlName="product_id"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!sliderForm.valid">
+        Cập nhật
+      </button>
+      <button class="btn btn-secondary" routerLink="/admin">Hủy</button>
+    </form>
+  </div>
+  

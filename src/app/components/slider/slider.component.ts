@@ -22,7 +22,7 @@ export class SliderComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
   ){}
-  ngOnInit(): void {
+  ngOnInit() {
     this.getSliders(1,100);
   }
 

@@ -62,8 +62,7 @@ export class SliderAdminComponent implements OnInit{
           this.sliderService.deleteSlider(silder.id).subscribe({
             next: (respone) => {
               debugger;
-              console.log('Xóa thành công');
-              alert(respone);
+              alert("Xóa thành công");
               location.reload();
               // this.getAllCategoires(this.currentPage,this.itemsPerPage)
             },
@@ -77,5 +76,15 @@ export class SliderAdminComponent implements OnInit{
           });
         }
       }
+
+      insertSlider(){
+        debugger
+        this.router.navigate(['/admin/slider/insert']);
+    }
+
+    updateSlider(sliderId:number){
+      debugger
+      this.router.navigate(['/admin/slider/update',sliderId]);
+  }
     
 }

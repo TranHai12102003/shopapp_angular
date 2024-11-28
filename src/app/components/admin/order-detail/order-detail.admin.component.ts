@@ -9,11 +9,12 @@ import { OrderService } from 'src/app/services/order.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
-  selector: 'app-order-detail',
-  templateUrl: './order-detail.component.html',
-  styleUrls: ['./order-detail.component.scss']
+  selector: 'app-order-detail-admin',
+  templateUrl: './order-detail.admin.component.html',
+  styleUrls: ['./order-detail.admin.component.scss']
 })
 export class OrderDetailComponent implements OnInit{
+  orderId:number=0;
   orderResponse:OrderResponse={
     id: 0, // Hoặc bất kỳ giá trị số nào bạn muốn
     user_id: 0,
@@ -39,10 +40,11 @@ export class OrderDetailComponent implements OnInit{
   }
   getOrderDetails(): void {
     debugger
-    const orderId = Number(this.activatedRoute.snapshot.paramMap.get('orderId')); // Thay bằng ID của đơn hàng bạn muốn lấy.
-    this.orderService.getOrderById(orderId).subscribe({
+    this.orderId = Number(this.activatedRoute.snapshot.paramMap.get('id')); // Thay bằng ID của đơn hàng bạn muốn lấy.
+    this.orderService.getOrderById(this.orderId).subscribe({
       next: (response: any) => {        
-        debugger;       
+        debugger;    
+        console.log(response);   
         this.orderResponse.id = response.id;
         this.orderResponse.user_id = response.user_id;
         this.orderResponse.fullname = response.fullname;

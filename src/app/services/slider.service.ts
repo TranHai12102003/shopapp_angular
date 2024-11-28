@@ -4,6 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Slider } from '../models/slider';
 import { Product } from '../models/product';
+import { SliderDTO } from '../dtos/slider/slider.dto';
 @Injectable({
     providedIn: 'root'
   })
@@ -25,6 +26,24 @@ export class SliderService{
       deleteSlider(sliderId:number){
         return this.http.delete(`${this.apiGetSliders}/${sliderId}`)
       }
+
+      insertSlider(insertSliderDTO:SliderDTO):Observable<any>{
+        return this.http.post<any>(`${this.apiGetSliders}`,insertSliderDTO)
+      }
+      
+      uploadImage(sliderId: number, formData: FormData): Observable<any> {
+        return this.http.post<any>(`${this.apiGetSliders}/uploads/${sliderId}`, formData);
+      }
+
+      updateSlider(sliderId:number,sliderDTO:SliderDTO):Observable<SliderDTO>{
+        return this.http.put<SliderDTO>(`${this.apiGetSliders}/update/${sliderId}`,sliderDTO);
+      }
+
+      getSliderById(sliderId:number):Observable<SliderDTO>{
+        return this.http.get<SliderDTO>(`${this.apiGetSliders}/${sliderId}`);
+        
+      }
+
 
     // Phương thức xử lý hành động khi click vào slider
   handleSliderAction(slider: Slider): Observable<any> {

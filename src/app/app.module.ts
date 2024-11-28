@@ -4,7 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { OrderComponent } from './components/order/order.component';
-import { OrderDetailComponent } from './components/order-detail/order.detail.component';
+import { OrderDetailComponent } from './components/admin/order-detail/order-detail.admin.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
@@ -30,6 +30,8 @@ import { InsertProductComponent } from './components/admin/product/insert/insert
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { UpdateProductComponent } from './components/admin/product/update/update.product.admin.component';
 import { InsertProductImg } from './components/admin/product/insertImg/insertImg.product.admin.component';
+import { InsertSliderComponent } from './components/admin/slider/insert/insert.slider.admin.component';
+import { UpdateSliderComponent } from './components/admin/slider/update/update.slider.admin.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -55,6 +57,8 @@ import { InsertProductImg } from './components/admin/product/insertImg/insertImg
     InsertProductComponent,
     UpdateProductComponent,
     InsertProductImg,
+    InsertSliderComponent,
+    UpdateSliderComponent
     
   ],
   imports: [

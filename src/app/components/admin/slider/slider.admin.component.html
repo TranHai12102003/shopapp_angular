@@ -2,7 +2,7 @@
     <div class="container mt-5">
         <h1 class="text-center mb-4">Danh Sách Sliders</h1>
         <div class="mb-3 text-right">
-            <button class="btn btn-success"><i class="fas fa-plus"></i> Thêm Slider Mới</button>
+            <button class="btn btn-success" (click)="insertSlider()"><i class="fas fa-plus"></i> Thêm Slider Mới</button>
         </div>
         <div class="table-responsive">
             <table class="table table-hover table-striped table-bordered align-middle">
@@ -24,7 +24,7 @@
                         <td><img [src]="slider.imageUrl" alt="Slider Image" class="slider-image"></td>
                         <td><a>{{slider.linkType}}</a></td>
                         <td>
-                            <button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Sửa</button>
+                            <button class="btn btn-primary btn-sm" (click)="updateSlider(slider.id)"><i class="fa fa-edit"></i> Sửa</button>
                             <button class="btn btn-danger btn-sm" (click)="deleteSliderId(slider)"><i class="fa fa-trash"></i> Xóa</button>
                         </td>
                     </tr>

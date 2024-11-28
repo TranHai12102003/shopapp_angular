@@ -1,0 +1,66 @@
+
+<form (ngSubmit)="insertSlider()" #sliderForm="ngForm">
+    <!-- Title -->
+    <div>
+      <label for="title">Title:</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        [(ngModel)]="insertSliderDTO.title"
+        required
+      />
+    </div>
+  
+    <!-- Link Type -->
+    <div>
+      <label for="linkType">Link Type:</label>
+      <select
+        id="linkType"
+        name="linkType"
+        [(ngModel)]="insertSliderDTO.link_type"
+        required
+      >
+        <option value="category">Category</option>
+        <option value="product">Product</option>
+        <option value="all_products">All Products</option>
+      </select>
+    </div>
+  
+    <!-- Category ID -->
+    <div *ngIf="insertSliderDTO.link_type === 'category'">
+      <label for="categoryId">Category ID:</label>
+      <input
+        type="number"
+        id="categoryId"
+        name="categoryId"
+        [(ngModel)]="insertSliderDTO.category_id"
+      />
+    </div>
+  
+    <!-- Product ID -->
+    <div *ngIf="insertSliderDTO.link_type === 'product'">
+      <label for="productId">Product ID:</label>
+      <input
+        type="number"
+        id="productId"
+        name="productId"
+        [(ngModel)]="insertSliderDTO.product_id"
+      />
+    </div>
+  
+    <!-- Image -->
+    <div>
+      <label for="image">Image:</label>
+      <input
+        type="file"
+        id="image"
+        (change)="onFileChange($event)"
+        required
+      />
+    </div>
+  
+    <!-- Submit Button -->
+    <button type="submit">Add Slider</button>
+  </form>
+  

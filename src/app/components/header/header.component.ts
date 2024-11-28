@@ -9,6 +9,9 @@ import { TokenService } from 'src/app/services/token.service';
 import { UserService } from 'src/app/services/user.service';
 import { NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
 import { CartService } from 'src/app/services/cart.service';
+import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/models/product';
+import { environment } from 'src/app/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -21,11 +24,13 @@ export class HeaderComponent implements OnInit {
   subAsusCategories: Category[] = [];
   subLenovoCategories:Category[]=[];
   subHpCategories:Category[]=[];
+  subAcerCategories:Category[]=[];
   selectedCategoryId: number = 0;
   selectedCategoryName: string = 'Danh mục';
   keyword: string = '';
   parentId:number=0;
   isExpanded: boolean = false;
+  products:Product[]=[];
 
   userResponse?:UserResponse | null
   isPopoverOpen = false;
@@ -39,7 +44,8 @@ export class HeaderComponent implements OnInit {
     private tokenService:TokenService,
     private popoverConfig: NgbPopoverConfig, 
     private cartService:CartService, 
-    private router: Router) { }
+    private router: Router,
+    private productService:ProductService) { }
 
   ngOnInit() {
     // this.getCategories(1, 100);
@@ -50,6 +56,8 @@ export class HeaderComponent implements OnInit {
     this.getSubAsusCategories(4);
     this.getSubLenovoCategories(6);
     this.getSubHpCategories(17);
+    this.getSubAcerCategories(77)
+    this.getProductLatest();
   }
 
   togglePopover(event: Event): void {
@@ -74,6 +82,22 @@ export class HeaderComponent implements OnInit {
     this.selectedCategoryName = selectedCategory ? selectedCategory.name : 'Tất cả';
     this.sharedService.updateSelectedCategoryId(this.selectedCategoryId);
   }
+
+ getProductLatest() {
+  this.productService.getProductLatest().subscribe({
+    next: (products: Product[]) => {
+      console.log("Dữ liệu API trả về:", products);
+      products.forEach((product:Product)=>{
+        product.url=`${environment.apiBaseUrl}/products/images/${product.thumbnail}`;
+      });
+      this.products=products;
+    },
+    error: (err: any) => {
+      console.error("Lỗi lấy sản phẩm mới nhất:", err.message || err);
+    },
+  });
+}
+
 
   // getCategories(page: number, limit: number) {
   //   this.categoryService.getCategories(page, limit).subscribe({
@@ -114,6 +138,18 @@ export class HeaderComponent implements OnInit {
         debugger
         this.subAsusCategories = subcategories;
         console.log(this.subAsusCategories);
+      },
+      error: (error: any) => {
+        console.error('Error fetching categories: ', error);
+      }
+    });
+  }
+  getSubAcerCategories(parentId:number) {
+    this.categoryService.getSubCategories(parentId).subscribe({
+      next: (subcategories: Category[]) => {
+        debugger
+        this.subAcerCategories = subcategories;
+        console.log(this.subAcerCategories);
       },
       error: (error: any) => {
         console.error('Error fetching categories: ', error);
@@ -168,6 +204,13 @@ export class HeaderComponent implements OnInit {
 
   collapseSearch() {
     this.isExpanded = false;
+  }
+
+  //hàm xử lý sự kiện khi người dùng bấm vào sản phẩm
+  onProductClick(productId:number){
+    debugger
+    //điều hướng đến trang product-detail với productId là tham số
+    this.router.navigate(['/products',productId]);
   }
 
 }

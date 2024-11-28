@@ -6,6 +6,7 @@ import { Product } from '../models/product';
 import { Category } from '../models/category';
 import { ProductDTO } from '../dtos/product/insert.product.dto';
 import { ProductImage } from '../models/product.image';
+import { ProductUpdateDTO } from '../dtos/product/update.product.attribute';
 
 @Injectable({
   providedIn: 'root'
@@ -31,15 +32,26 @@ export class ProductService {
   }
 
   getProductById(id: number) {
-    return this.http.get<Product>(`${environment.apiBaseUrl}/products/${id}`);
+    return this.http.get<ProductUpdateDTO>(`${environment.apiBaseUrl}/products/${id}`);
   }
 
+  //Lấy các sản phẩm theo chuỗi id
   getProductsByIds(productIds:number[]):Observable<Product[]>{
     //chuyển danh sách ID thành 1 chuỗi và truyền vào Params
     debugger
     const params= new HttpParams().set('ids',productIds.join(','));
     return this.http.get<Product[]>(`${this.apiGetProducts}/by-ids`,{params});
   }
+
+  //lấy sản phẩm mới nhất
+  getProductLatest():Observable<Product[]>{
+    return this.http.get<Product[]>(`${this.apiGetProducts}/latest`);
+  }
+
+  getCategoryId(categoryId:number){
+    return this.http.get(`${environment.apiBaseUrl}/categories/${categoryId}`);
+  }
+
   addProduct(product:ProductDTO):Observable<any>{
     return this.http.post<any>(`${this.apiGetProducts}`,product);
   }

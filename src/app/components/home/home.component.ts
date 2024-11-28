@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
 
     this.getProducts(this.keyword, this.selectedCategoryId, this.currentPage, this.itemsPerPage);
   }
-
+  // tìm kiếm sản phẩm
   searchProducts() {
     this.currentPage = 0;
     this.itemsPerPage = 12;

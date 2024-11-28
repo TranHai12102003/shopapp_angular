@@ -215,3 +215,87 @@
 // @import '/src/assets/assets/css/bootstrap.min.css';
 // @import '/src/assets/assets/css/plugins.min.css';
 // @import '/src/assets/assets/css/kaiadmin.min.css';
+
+/* styles.css */
+/* styles.css */
+/* Cải tiến bảng */
+.table {
+    font-size: 14px;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px;
+  }
+  
+  .table th {
+    background-color: #343a40;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .table td {
+    background-color: #f8f9fa;
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: #e2e6ea;
+  }
+  
+  /* Các badge trạng thái */
+  .badge {
+    font-size: 12px;
+    padding: 5px 10px;
+    text-transform: capitalize;
+  }
+  
+  /* Các nút hành động */
+  .action-buttons button {
+    margin-right: 5px;
+  }
+  
+  /* Style cho pagination */
+  .pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination {
+    margin: 0;
+  }
+  
+  .page-item {
+    margin: 0 5px;
+  }
+  
+  .page-link {
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+  }
+  
+  .page-link:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Nút đầu trang và cuối trang */
+  .page-item:first-child .page-link, .page-item:last-child .page-link {
+    background-color: #28a745;
+    font-weight: bold;
+  }
+  
+  .page-item.active .page-link {
+    background-color: #007bff;
+    color: white;
+  }
+  .action-buttons{
+    display: flex;
+  }
+  
+
+

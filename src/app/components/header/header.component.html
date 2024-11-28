@@ -234,13 +234,13 @@
             <li class="menu-item-has-children">
               <a href="#">Sản phẩm mới<i class="ion ion-ios-arrow-down"></i></a>
               <div class="menu-subs menu-mega menu-column-4">
-                <div class="list-item text-center">
-                  <a href="#">
-                    <img src="./asset/image-1.jpg" class="responsive" alt="New Product">
-                    <h4 class="title">Product 1</h4>
+                <div class="list-item text-center"  *ngFor="let product of products">
+                  <a (click)="onProductClick(product.id)">
+                    <img [src]="product.url" class="responsive" alt="New Product">
+                    <h4 class="title">{{product.name}}</h4>
                   </a>
                 </div>
-                <div class="list-item text-center">
+                <!-- <div class="list-item text-center">
                   <a href="#">
                     <img src="./asset/image-2.jpg" class="responsive" alt="New Product">
                     <h4 class="title">Product 2</h4>
@@ -257,7 +257,7 @@
                     <img src="./asset/image-4.jpg" class="responsive" alt="New Product">
                     <h4 class="title">Product 4</h4>
                   </a>
-                </div>
+                </div> -->
               </div>
             </li>
             <li class="menu-item-has-children">
@@ -286,6 +286,13 @@
                   <h4 class="title">Laptop HP</h4>
                   <ul>
                     <li (click)="onSearch()" *ngFor="let category of subHpCategories"
+                      (click)="selectCategory(category.id)" [value]="category.id"><a >{{category.name}}</a></li>
+                  </ul>
+                </div>
+                <div class="list-item">
+                  <h4 class="title">Laptop Acer</h4>
+                  <ul>
+                    <li (click)="onSearch()" *ngFor="let category of subAcerCategories"
                       (click)="selectCategory(category.id)" [value]="category.id"><a >{{category.name}}</a></li>
                   </ul>
                 </div>
