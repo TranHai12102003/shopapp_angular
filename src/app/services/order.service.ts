@@ -32,4 +32,8 @@ export class OrderService {
     .set('limit',limit.toString());
     return this.http.get<any>(this.apiGetAllOrders,{params});
   }
+
+  updateOrderStatus(OrderId:number, status:string):Observable<any>{
+    return this.http.put(`${this.apiUrl}/${OrderId}/status`,{status});
+  }
 }

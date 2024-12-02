@@ -58,8 +58,8 @@ export class CategoryAdminComponent implements OnInit {
           debugger;
           console.log('Xóa thành công');
           alert('Xóa thành công');
-          location.reload();
-          // this.getAllCategoires(this.currentPage,this.itemsPerPage)
+          // location.reload();
+          this.getAllCategoires(this.currentPage,this.itemsPerPage)
         },
         complete: () => {
           debugger;

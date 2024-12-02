@@ -32,6 +32,7 @@ import { UpdateProductComponent } from './components/admin/product/update/update
 import { InsertProductImg } from './components/admin/product/insertImg/insertImg.product.admin.component';
 import { InsertSliderComponent } from './components/admin/slider/insert/insert.slider.admin.component';
 import { UpdateSliderComponent } from './components/admin/slider/update/update.slider.admin.component';
+import { UserAdminComponent } from './components/admin/user/user.admin.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -58,7 +59,8 @@ import { UpdateSliderComponent } from './components/admin/slider/update/update.s
     UpdateProductComponent,
     InsertProductImg,
     InsertSliderComponent,
-    UpdateSliderComponent
+    UpdateSliderComponent,
+    UserAdminComponent
     
   ],
   imports: [

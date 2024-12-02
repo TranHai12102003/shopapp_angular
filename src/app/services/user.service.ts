@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpHeaders} from '@angular/common/http';
+import { HttpClient,HttpHeaders, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RegisterDTO } from '../dtos/user/registerdto';
 import { LoginDTO } from '../dtos/user/login.dto';
@@ -8,6 +8,7 @@ import { UserResponse } from '../responses/user/user.response';
 import { District } from '../models/district';
 import { City } from '../models/city';
 import { UpdateUserDTO } from '../dtos/user/update.user.dto';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,8 @@ export class UserService {
   private apiRegister = `${environment.apiBaseUrl}/users/register`;
   private apiLogin = `${environment.apiBaseUrl}/users/login`;
   private apiUserDetail = `${environment.apiBaseUrl}/users/details`;
+  private apiGetAllUser=`${environment.apiBaseUrl}/users`
+  private apiBlockOrEnable=`${environment.apiBaseUrl}/users`
   constructor(private http: HttpClient) { }
   private createHeaders(): HttpHeaders{
     return new HttpHeaders({'Content-Type': 'application/json','Accept-Language':'vi'});
@@ -33,6 +36,13 @@ export class UserService {
     return this.http.post(this.apiLogin,loginDTO,this.apiConfig)
   }
 
+  getAllUsers(keyword:string,page:number,limit:number){
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('limit', limit.toString());
+      return this.http.get<User[]>(this.apiGetAllUser,{params})
+  }
+
   getUserDetails(token:string){
     return this.http.post(this.apiUserDetail,{
       headers: new HttpHeaders({
@@ -40,6 +50,12 @@ export class UserService {
         Authorization: `Bearer ${token}`
       })
     })
+  }
+
+  toggleUserStatus(userId:number, active: boolean):Observable<any>{
+    return this.http.put<any>(`${this.apiBlockOrEnable}/${userId}/status`,null,{
+      params: { active: active.toString() }, // Gửi tham số `active`
+    });
   }
 
   saveUserResponseToLocalStorage(userResponse?:UserResponse){

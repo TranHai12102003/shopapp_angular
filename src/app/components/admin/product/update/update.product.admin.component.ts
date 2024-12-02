@@ -158,6 +158,8 @@ export class UpdateProductComponent implements OnInit{
     });
   }
 
+  
+
   // getProductById(id: number) {
   //   this.productService.getProductById(id).subscribe({
   //     next: (product: any) => {

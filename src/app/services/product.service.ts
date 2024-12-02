@@ -7,6 +7,7 @@ import { Category } from '../models/category';
 import { ProductDTO } from '../dtos/product/insert.product.dto';
 import { ProductImage } from '../models/product.image';
 import { ProductUpdateDTO } from '../dtos/product/update.product.attribute';
+import { ProductResponse } from '../responses/product/product.response';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,11 @@ export class ProductService {
 
   getProductById(id: number) {
     return this.http.get<ProductUpdateDTO>(`${environment.apiBaseUrl}/products/${id}`);
+  }
+
+  //Mới ngày 29-11-2024
+  getProductId(productId:number):Observable<ProductResponse>{
+    return this.http.get<ProductResponse>(`${environment.apiBaseUrl}/products/${productId}`);
   }
 
   //Lấy các sản phẩm theo chuỗi id

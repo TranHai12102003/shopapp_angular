@@ -71,4 +71,20 @@ export class OrderAdminComponent implements OnInit{
         debugger
         this.router.navigate(['/admin/orders', order.id]);
       }
+
+      changeOrderStatus(orderId: number, newStatus: string) {
+        if (confirm('Bạn có chắc muốn thay đổi trạng thái đơn hàng này không?')) {
+          this.orderService.updateOrderStatus(orderId, newStatus).subscribe({
+            next: (response) => {
+              alert(response.message);
+              this.getAllOrders(this.keyword, this.currentPage, this.itemsPerPage);
+            },
+            error: (error) => {
+              console.error('Lỗi khi cập nhật trạng thái:', error);
+              alert(error.message);
+            }
+          });
+        }
+      }
+      
 }

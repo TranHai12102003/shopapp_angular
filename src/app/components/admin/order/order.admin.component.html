@@ -28,7 +28,7 @@
           <td>{{ order.address }}</td>
           <td>{{ order.note }}</td>
           <td>{{ order.order_date | date: 'dd/MM/yyyy' }}</td>
-          <td> 
+          <!-- <td> 
             <span [ngClass]="{
               'badge bg-success': order.status === 'Completed',
               'badge bg-warning': order.status === 'Pending',
@@ -36,7 +36,17 @@
             }">
               {{ order.status }} 
             </span> 
-          </td>
+          </td> -->
+          <td>
+            <select style="width: 120px;" class="form-select" [ngModel]="order.status" (ngModelChange)="changeOrderStatus(order.id, $event)">
+              <option [value]="'pending'">pending</option>
+              <option [value]="'processing'">processing</option>
+              <option [value]="'shipped'">shipped</option>
+              <option [value]="'delivered'">delivered</option>
+              <option [value]="'cancelled'">cancelled</option>
+            </select>
+            <!-- <div class="mt-1 text-muted">Trạng thái hiện tại: {{ order.status }}</div> -->
+          </td>                       
           <td>{{ order.total_money | currency: 'VND': 'symbol':'1.0-0' }}</td>
           <!-- <td>{{ order.shipping_method }}</td> -->
           <td>{{ order.shipping_date | date: 'dd/MM/yyyy' }}</td>

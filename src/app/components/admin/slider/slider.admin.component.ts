@@ -63,8 +63,7 @@ export class SliderAdminComponent implements OnInit{
             next: (respone) => {
               debugger;
               alert("Xóa thành công");
-              location.reload();
-              // this.getAllCategoires(this.currentPage,this.itemsPerPage)
+              this.getAllSilders(this.currentPage,this.itemsPerPage)
             },
             complete: () => {
               debugger;
